@@ -40,6 +40,8 @@ function App() {
         });
 
         setInputValue("");
+
+        getAllTodos();
       } else {
         const res = await axios.put(`http://localhost:5000/${isUpdating}`, {
           text: inputValue,
@@ -47,6 +49,7 @@ function App() {
         setInputValue("");
 
         setIsUpdating("");
+        getAllTodos();
       }
     } catch (err) {
       console.log(err);
@@ -65,6 +68,7 @@ function App() {
       const res = await axios.delete(`http://localhost:5000/${id}`);
 
       alert(res.data);
+      getAllTodos();
     } catch (err) {
       console.log(err);
     }
